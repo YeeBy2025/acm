@@ -3,27 +3,25 @@ package main
 import "fmt"
 
 func main() {
-	var a string
-	_, err := fmt.Scanln(&a)
+	var length int
+	_, err := fmt.Scanf("%d", &length)
 	if err != nil {
 		return
 	}
-	sum := 1
-	flag := false
-	for _, runeChar := range a {
-		if runeChar == '-' {
-			sum -= 1
-		}
-		if runeChar == '*' {
-			sum *= 2
-		}
-		if sum >= 2025 {
-			flag = true
+	var a string
+	_, err = fmt.Scanln(&a)
+	if err != nil {
+		return
+	}
+	sum := 0
+	for i := 0; i < length-1; i++ {
+		if a[i] == a[i+1] {
+			sum++
 		}
 	}
-	if flag {
-		fmt.Println("YES")
-	} else {
+	if sum > 1 {
 		fmt.Println("NO")
+	} else {
+		fmt.Println("YES")
 	}
 }
